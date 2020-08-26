@@ -97,18 +97,20 @@ def get_total_rank(html):
                 u = u.replace('cy=', '').replace('"', '')
                 y.append(float(u))
     x = sorted(x, reverse=True)
-    y = sorted(y, reverse=True)
+    y = sorted(y)
 
     # get my rank
     my_x_rank = 1
     for i in range(len(x)):
-        if my_x > x[i]:
+        if my_x < x[i]:
             my_x_rank = i + 1
+        else:
             break
     my_y_rank = 1
     for i in range(len(y)):
         if my_y > y[i]:
             my_y_rank = i + 1
+        else:
             break
 
     print('あなたの演習数ランキングは ' + str(my_x_rank) + '位 です！')
@@ -154,13 +156,14 @@ def get_daily_rank(html):
                 if u.startswith('cy="'):
                     u = u.replace('cy=', '').replace('"', '')
                     y.append(float(u))
-    y = sorted(y, reverse=True)
+    y = sorted(y)
 
     # get my rank
     my_y_rank = 1
     for i in range(len(y)):
         if my_y > y[i]:
             my_y_rank = i + 1
+        else:
             break
 
     print('あなたの昨日の演習数ランキングは ' + str(my_y_rank) + '位 です！')
